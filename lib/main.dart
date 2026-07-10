@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hub/core/helper/om_generate_routes.dart';
+import 'package:fruit_hub/core/helper/on_generate_routes.dart';
 import 'package:fruit_hub/feature/splash/presentation/view/splash_view.dart';
 
 void main() {
