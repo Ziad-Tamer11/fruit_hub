@@ -44,7 +44,7 @@ class PageViewItem extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF4E5556) /* Grayscale-500 */,
-              fontSize: 16,
+              fontSize: 13,
               fontFamily: 'Cairo',
               fontWeight: FontWeight.w600,
               height: 1.70,
