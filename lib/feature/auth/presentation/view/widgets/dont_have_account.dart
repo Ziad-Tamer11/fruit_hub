@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
+import 'package:fruit_hub/feature/auth/presentation/view/sign_up_view.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({super.key});
@@ -17,6 +19,10 @@ class DontHaveAccount extends StatelessWidget {
             ),
           ),
           TextSpan(
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.pushNamed(context, SignUpView.routeName);
+              },
             text: 'قم بإنشاء حساب',
             style: TextStyles.semiBold16.copyWith(
               color: AppColors.primaryColor /* Green1-500 */,
