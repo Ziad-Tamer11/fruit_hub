@@ -1,9 +1,9 @@
 class CustomException implements Exception {
-  final String message;
+  final String errMessage;
 
-  CustomException({required this.message});
+  CustomException({required this.errMessage});
 
   String toStirng() {
-    return message;
+    return errMessage;
   }
 }

@@ -17,12 +17,12 @@ class FirebaseAuthService {
         throw Exception('The account already exists for that email.');
       } else {
         throw CustomException(
-          message: 'An error occured. Please try again later.',
+          errMessage: 'An error occured. Please try again later.',
         );
       }
     } catch (e) {
       throw CustomException(
-        message: 'An error occured. Please try again later.',
+        errMessage: 'An error occured. Please try again later.',
       );
     }
   }

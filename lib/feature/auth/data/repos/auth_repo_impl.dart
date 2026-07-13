@@ -23,7 +23,7 @@ class AuthRepoImpl extends AuthRepo {
       );
       return right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
-      return Left(ServerFailure(e.message));
+      return Left(ServerFailure(e.errMessage));
     } catch (e) {
       return left(ServerFailure('An error occured. Please try again later.'));
     }
