@@ -7,7 +7,7 @@ import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/core/widgets/custom_text_form_field.dart';
 import 'package:fruit_hub/core/widgets/or_divider.dart';
 import 'package:fruit_hub/feature/auth/presentation/view/sign_up_view.dart';
-import 'package:fruit_hub/feature/auth/presentation/view/widgets/dont_have_account.dart';
+import 'package:fruit_hub/feature/auth/presentation/view/widgets/prompt_text.dart';
 import 'package:fruit_hub/feature/auth/presentation/view/widgets/social_login_button.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -44,7 +44,7 @@ class LoginViewBody extends StatelessWidget {
             const SizedBox(height: 33),
             CustomButton(onPressed: () {}, text: 'تسجيل دخول'),
             const SizedBox(height: 33),
-            DontHaveAccount(
+            PromptText(
               onTap: () {
                 Navigator.of(context).pushNamed(SignUpView.routeName);
               },

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 
-class DontHaveAccount extends StatelessWidget {
-  const DontHaveAccount({
+class PromptText extends StatelessWidget {
+  const PromptText({
     super.key,
     required this.onTap,
     required this.text1,
