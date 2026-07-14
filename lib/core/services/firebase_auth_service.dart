@@ -12,9 +12,11 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw Exception('الرقم السري ضعيف جداً.');
+        throw CustomException(errMessage: 'الرقم السري ضعيف جداً.');
       } else if (e.code == 'email-already-in-use') {
-        throw Exception('لقد قمت بالتسجيل مسبقاً. الرجاء تسجيل الدخول.');
+        throw CustomException(
+          errMessage: 'لقد قمت بالتسجيل مسبقاً. الرجاء تسجيل الدخول.',
+        );
       } else {
         throw CustomException(
           errMessage: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
