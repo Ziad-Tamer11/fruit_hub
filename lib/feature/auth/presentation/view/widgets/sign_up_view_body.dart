@@ -5,7 +5,7 @@ import 'package:fruit_hub/core/helper/build_error_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/core/widgets/custom_text_form_field.dart';
 import 'package:fruit_hub/core/widgets/password_field.dart';
-import 'package:fruit_hub/feature/auth/presentation/manager/cubit/sign_up_cubit.dart';
+import 'package:fruit_hub/feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:fruit_hub/feature/auth/presentation/view/widgets/prompt_text.dart';
 import 'package:fruit_hub/feature/auth/presentation/view/widgets/terms_and_conditions.dart';
 
