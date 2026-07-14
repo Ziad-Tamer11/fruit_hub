@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hub/core/errors/exceptions.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
@@ -76,5 +77,21 @@ class FirebaseAuthService {
         errMessage: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
       );
     }
+  }
+
+  Future<User> signInWithGoogle() async {
+    final GoogleSignIn signIn = GoogleSignIn.instance;
+
+    await signIn.initialize();
+
+    final GoogleSignInAccount googleUser = await signIn.authenticate();
+
+    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+    );
+
+    return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
   }
 }
