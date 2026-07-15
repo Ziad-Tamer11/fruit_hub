@@ -11,7 +11,7 @@ import 'package:fruit_hub/feature/auth/data/model/user_model.dart';
 import 'package:fruit_hub/feature/auth/domain/entities/user_entity.dart';
 import 'package:fruit_hub/feature/auth/domain/repos/auth_repo.dart';
 
-class AuthRepoImpl extends AuthRepo {
+class AuthRepoImpl implements AuthRepo {
   final FirebaseAuthService firebaseAuthService;
   final DatabaseService databaseService;
 
@@ -77,34 +77,86 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() async {
     User? user;
+    bool shouldDeleteUser = false;
     try {
       user = await firebaseAuthService.signInWithGoogle();
-      var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      UserEntity userEntity;
+      var isUserExist = await databaseService.checkIfDataExists(
+        path: BackendEndpoint.isUserExist,
+        documentId: user.uid,
+      );
+      if (isUserExist) {
+        userEntity = await getUserData(uid: user.uid);
+      } else {
+        shouldDeleteUser = true;
+        userEntity = UserModel.fromFirebaseUser(user);
+        await addUserData(user: userEntity);
+      }
       return right(userEntity);
     } on CustomException catch (e) {
-      await deleteUser(user);
+      if (shouldDeleteUser) {
+        await deleteUser(user);
+      }
       return left(ServerFailure(e.errMessage));
     } catch (e) {
-      await deleteUser(user);
+      if (shouldDeleteUser) {
+        await deleteUser(user);
+      }
       log('Exception in AuthRepoImpl.signInWithGoogle: ${e.toString()}');
       return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }
 
+  // This flag is used to determine whether the Firebase Auth user should be deleted
+  // if an exception occurs. We only delete newly created social accounts when
+  // saving their Firestore data fails, to avoid leaving orphaned Auth accounts.
+  // Existing users must never be deleted.
+  //!------------------------------------------------------------------------------------
+  // نحذف المستخدم من Firebase Auth فقط إذا كان ده أول تسجيل دخول له
+  // وتم إنشاء الحساب لكن فشل حفظ بياناته في Firestore.
+  // أما المستخدم القديم فلا يتم حذفه إطلاقًا إذا حدث خطأ أثناء جلب بياناته.
+  Future<void> deleteUserIfNeeded(bool shouldDeleteUser, User? user) async {
+    if (shouldDeleteUser) {
+      await deleteUser(user);
+    }
+    // This helper should be called only in the catch blocks of
+    // signInWithGoogle() and signInWithFacebook().
+    // It deletes the Firebase Auth user only when shouldDeleteUser is true.
+    //!----------------------------------------------------------------------------------
+    // تُستخدم هذه الـ helper داخل الـ catch في signInWithGoogle و
+    // signInWithFacebook بدلاً من استدعاء deleteUser() مباشرة.
+    // يتم حذف المستخدم فقط إذا كانت قيمة shouldDeleteUser = true.
+    await deleteUserIfNeeded(shouldDeleteUser, user);
+  }
+
   @override
   Future<Either<Failure, UserEntity>> signInWithFacebook() async {
     User? user;
+    bool shouldDeleteUser = false;
     try {
       user = await firebaseAuthService.signInWithFacebook();
-      var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      UserEntity userEntity;
+      var isUserExist = await databaseService.checkIfDataExists(
+        path: BackendEndpoint.isUserExist,
+        documentId: user.uid,
+      );
+      if (isUserExist) {
+        userEntity = await getUserData(uid: user.uid);
+      } else {
+        shouldDeleteUser = true;
+        userEntity = UserModel.fromFirebaseUser(user);
+        await addUserData(user: userEntity);
+      }
       return right(userEntity);
     } on CustomException catch (e) {
-      await deleteUser(user);
+      if (shouldDeleteUser) {
+        await deleteUser(user);
+      }
       return left(ServerFailure(e.errMessage));
     } catch (e) {
-      await deleteUser(user);
+      if (shouldDeleteUser) {
+        await deleteUser(user);
+      }
       log('Exception in AuthRepoImpl.signInWithFacebook: ${e.toString()}');
       return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
