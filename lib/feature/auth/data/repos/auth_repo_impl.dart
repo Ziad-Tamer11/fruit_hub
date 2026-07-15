@@ -11,6 +11,23 @@ import 'package:fruit_hub/feature/auth/data/model/user_model.dart';
 import 'package:fruit_hub/feature/auth/domain/entities/user_entity.dart';
 import 'package:fruit_hub/feature/auth/domain/repos/auth_repo.dart';
 
+/// Repository implementation responsible for coordinating
+/// between Firebase Authentication and Firestore.
+///
+/// Flow:
+/// UI
+///   ↓
+/// Cubit
+///   ↓
+/// UseCase
+///   ↓
+/// AuthRepoImpl
+///      ├── FirebaseAuthService
+///      └── FirestoreService
+///
+/// مسئول عن الربط بين Firebase Authentication
+/// و Firestore لتنفيذ جميع عمليات المصادقة.
+
 class AuthRepoImpl implements AuthRepo {
   final FirebaseAuthService firebaseAuthService;
   final DatabaseService databaseService;
@@ -162,6 +179,15 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
+  // Saves the user's profile into Firestore.
+  //
+  // Authentication creates only the Auth account.
+  // The application's user profile is stored separately.
+  //
+  // حفظ بيانات المستخدم داخل Firestore
+  // لأن Firebase Authentication لا يحتفظ
+  // إلا ببيانات تسجيل الدخول.
+
   @override
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
@@ -170,6 +196,40 @@ class AuthRepoImpl implements AuthRepo {
       documentId: user.uId,
     );
   }
+
+  // Fetches the user's profile from Firestore.
+  //
+  // After successful authentication we already have
+  // the Firebase UID.
+  //
+  // That UID is used as the Firestore document id
+  // to retrieve the user's application data.
+  //
+  // بعد نجاح تسجيل الدخول نحصل على uid من Firebase Auth.
+  //
+  // ثم نستخدم الـ uid للوصول إلى الـ document
+  // الخاص بالمستخدم داخل Firestore واسترجاع بياناته.
+  //!-----------------------------------------------------------
+  /*
+  Why do we fetch data from Firestore after login?
+
+  Firebase Authentication is responsible only for identity
+  (uid, email, provider, ...).
+
+  The application's profile data is stored separately
+  inside Firestore.
+
+  T herefore, after every successful login,
+  we fetch the user's profile using the Firebase uid.
+
+  -------------------------------------------------------
+
+  لماذا نقوم بجلب البيانات من Firestore بعد تسجيل الدخول؟
+
+  لأن Firebase Authentication يحتفظ فقط ببيانات المصادقة،
+  بينما بيانات المستخدم الخاصة بالتطبيق محفوظة في Firestore،
+  لذلك نستخدم الـ uid لجلب هذه البيانات.
+  */
 
   @override
   Future<UserEntity> getUserData({required String uid}) async {

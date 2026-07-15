@@ -1,8 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fruit_hub/core/services/database_service.dart';
 
+/// Concrete implementation of DatabaseService using Cloud Firestore.
+///
+/// جميع عمليات حفظ وقراءة البيانات من Firestore تتم من خلال هذا الكلاس.
+
 class FireStoreService implements DatabaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  // Saves data inside a Firestore collection.
+  //
+  // If documentId is provided:
+  // users/{documentId}
+  //
+  // Otherwise Firestore generates a random document id.
+  //
+  // حفظ البيانات داخل Firestore.
+  // إذا كان هناك documentId سيتم استخدامه.
+  // وإلا سيقوم Firestore بإنشاء id تلقائياً.
+
   @override
   Future<void> addData({
     required String path,
@@ -16,6 +32,17 @@ class FireStoreService implements DatabaseService {
     }
   }
 
+  // Fetches a single document from Firestore.
+  //
+  // Example:
+  // users/abc123
+  //
+  // Returns the document data as a Map<String, dynamic>
+  // so it can later be converted into UserModel.
+  //
+  // جلب بيانات مستخدم واحد من Firestore
+  // ثم إرجاعها على هيئة Map ليتم تحويلها إلى UserModel.
+
   @override
   Future<Map<String, dynamic>> getData({
     required String path,
@@ -24,6 +51,15 @@ class FireStoreService implements DatabaseService {
     var data = await firestore.collection(path).doc(documentId).get();
     return data.data() as Map<String, dynamic>;
   }
+
+  // Checks whether a Firestore document already exists.
+  //
+  // Used after Google/Facebook authentication
+  // to determine whether this is a new user
+  // or an existing one.
+  //
+  // التحقق من وجود بيانات المستخدم داخل Firestore
+  // لمعرفة هل هذه أول مرة يسجل الدخول أم لا.
 
   @override
   Future<bool> checkIfDataExists({

@@ -5,6 +5,17 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruit_hub/core/errors/exceptions.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+/// Handles all Firebase Authentication operations only.
+///
+/// This service is responsible for creating accounts,
+/// signing users in, and deleting authentication accounts.
+///
+/// It does NOT store user profile data.
+/// That responsibility belongs to Firestore.
+///
+/// مسئول فقط عن عمليات Firebase Authentication.
+/// ولا يقوم بحفظ بيانات المستخدم داخل Firestore.
+
 class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
     required String email,
@@ -108,6 +119,15 @@ class FirebaseAuthService {
       facebookAuthCredential,
     )).user!;
   }
+
+  // Deletes the currently authenticated Firebase Auth account.
+  //
+  // Used internally to rollback account creation
+  // if saving Firestore data fails.
+  //
+  // حذف حساب Firebase Auth الحالي.
+  // يستخدم فقط في حالة فشل حفظ البيانات
+  // بعد إنشاء الحساب.
 
   Future deleteUser() async {
     await FirebaseAuth.instance.currentUser!.delete();
