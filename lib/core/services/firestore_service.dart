@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fruit_hub/core/services/database_service.dart';
-import 'package:fruit_hub/feature/auth/data/model/user_model.dart';
-import 'package:fruit_hub/feature/auth/domain/entities/user_entity.dart';
 
 class FireStoreService implements DatabaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -14,11 +12,11 @@ class FireStoreService implements DatabaseService {
   }
 
   @override
-  Future<UserEntity> getUserData({
+  Future<Map<String, dynamic>> getData({
     required String path,
-    required String uid,
+    required String documentId,
   }) async {
-    var data = await firestore.collection(path).doc(uid).get();
-    return UserModel.fromJson(data.data() as Map<String, dynamic>);
+    var data = await firestore.collection(path).doc(documentId).get();
+    return data.data() as Map<String, dynamic>;
   }
 }
