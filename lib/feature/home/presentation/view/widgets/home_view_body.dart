@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MainView extends StatelessWidget {
-  const MainView({super.key});
-
-  static const routeName = 'home';
+class HomeViewBody extends StatelessWidget {
+  const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
