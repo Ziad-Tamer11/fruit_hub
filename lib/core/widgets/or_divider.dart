@@ -9,9 +9,9 @@ class OrDivider extends StatelessWidget {
     return const Row(
       children: [
         Expanded(child: Divider(color: Color(0xFFDCDEDE), thickness: 1)),
-        const SizedBox(width: 17.83),
+        SizedBox(width: 17.83),
         Text('أو', style: TextStyles.semiBold16),
-        const SizedBox(width: 18.88),
+        SizedBox(width: 18.88),
         Expanded(child: Divider(color: Color(0xFFDCDEDE), thickness: 1)),
       ],
     );

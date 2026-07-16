@@ -18,7 +18,7 @@ class UserEntity {
   //
   // تحويل الـ Entity إلى Map حتى يمكن حفظها داخل Firestore.
 
-  toMap() {
+  Map<String, String> toMap() {
     return {'name': name, 'email': email, 'uId': uId};
   }
 }
