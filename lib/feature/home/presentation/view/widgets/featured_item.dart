@@ -19,6 +19,10 @@ class FeaturedItem extends StatelessWidget {
             width: itemWidth * .5,
             height: 158,
             decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(4),
+                bottomRight: Radius.circular(4),
+              ),
               image: DecorationImage(
                 image: svg.Svg(Assets.imagesFeaturedItemBackground),
                 fit: BoxFit.fill,

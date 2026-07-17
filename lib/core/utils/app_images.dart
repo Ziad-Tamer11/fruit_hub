@@ -22,9 +22,17 @@ class Assets {
   /// assets/images/featured.png
   static const String imagesFeatured = "assets/images/featured.png";
 
+  /// Assets for imagesFeatured2
+  /// assets/images/featured_2.png
+  static const String imagesFeatured2 = "assets/images/featured_2.png";
+
   /// Assets for imagesFeaturedItemBackground
   /// assets/images/featured_item_background.svg
   static const String imagesFeaturedItemBackground = "assets/images/featured_item_background.svg";
+
+  /// Assets for imagesFeaturedItemBackground2
+  /// assets/images/featured_item_background_2.svg
+  static const String imagesFeaturedItemBackground2 = "assets/images/featured_item_background_2.svg";
 
   /// Assets for imagesFilter
   /// assets/images/filter.svg
