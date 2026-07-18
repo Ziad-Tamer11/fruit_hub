@@ -44,6 +44,14 @@ class Assets {
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
 
+  /// Assets for imagesHome
+  /// assets/images/home.svg
+  static const String imagesHome = "assets/images/home.svg";
+
+  /// Assets for imagesHomeSelected
+  /// assets/images/home_selected.svg
+  static const String imagesHomeSelected = "assets/images/home_selected.svg";
+
   /// Assets for imagesLogo
   /// assets/images/logo.svg
   static const String imagesLogo = "assets/images/logo.svg";
@@ -76,6 +84,15 @@ class Assets {
   /// assets/images/plant.svg
   static const String imagesPlant = "assets/images/plant.svg";
 
+  /// Assets for imagesProduct
+  /// assets/images/product.svg
+  static const String imagesProduct = "assets/images/product.svg";
+
+  /// Assets for imagesProductSelected
+  /// assets/images/product_selected.svg
+  static const String imagesProductSelected =
+      "assets/images/product_selected.svg";
+
   /// Assets for imagesProfileImage
   /// assets/images/profile_image.png
   static const String imagesProfileImage = "assets/images/profile_image.png";
@@ -84,9 +101,26 @@ class Assets {
   /// assets/images/search_icon.svg
   static const String imagesSearchIcon = "assets/images/search_icon.svg";
 
+  /// Assets for imagesShoppingCart
+  /// assets/images/shopping_cart.svg
+  static const String imagesShoppingCart = "assets/images/shopping_cart.svg";
+
+  /// Assets for imagesShoppingCartSelected
+  /// assets/images/shopping_cart_selected.svg
+  static const String imagesShoppingCartSelected =
+      "assets/images/shopping_cart_selected.svg";
+
   /// Assets for imagesSplashBottom
   /// assets/images/splash_bottom.svg
   static const String imagesSplashBottom = "assets/images/splash_bottom.svg";
+
+  /// Assets for imagesUser
+  /// assets/images/user.svg
+  static const String imagesUser = "assets/images/user.svg";
+
+  /// Assets for imagesUserSelected
+  /// assets/images/user_selected.svg
+  static const String imagesUserSelected = "assets/images/user_selected.svg";
 
   /// Assets for imagesWatermelonTest
   /// assets/images/watermelon_test.png
