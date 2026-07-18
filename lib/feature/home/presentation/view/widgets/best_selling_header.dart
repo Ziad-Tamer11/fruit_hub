@@ -3,8 +3,10 @@ import 'package:fruit_hub/core/utils/app_text_styles.dart';
 import 'package:fruit_hub/feature/best_selling_fruits/presentation/view/best_selling_fruits_view.dart';
 
 class BestSellingHeader extends StatelessWidget {
-  const BestSellingHeader({super.key});
+  const BestSellingHeader({super.key, this.text, this.onTap});
 
+  final String? text;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,8 +18,7 @@ class BestSellingHeader extends StatelessWidget {
             Navigator.pushNamed(context, BestSellingFruitsView.routeName);
           },
           child: Text(
-            'المزيد',
-
+            text ?? '',
             style: TextStyles.regular13.copyWith(color: Color(0xFF949D9E)),
           ),
         ),

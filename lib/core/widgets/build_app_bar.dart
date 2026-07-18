@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 import 'package:fruit_hub/core/widgets/notification_widget.dart';
 
 AppBar buildAppBar(BuildContext context, {required String title}) {
   return AppBar(
-    actions: const [NotificationWidget()],
+    actions: const [
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        child: NotificationWidget(),
+      ),
+    ],
     backgroundColor: Colors.transparent,
     elevation: 0,
     title: const Text(
