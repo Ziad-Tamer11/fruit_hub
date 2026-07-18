@@ -13,23 +13,23 @@ class BottomNavigationBarEntity {
 
 List<BottomNavigationBarEntity> get bottomNavigationBarItems => [
   BottomNavigationBarEntity(
-    activeImage: Assets.imagesHome,
-    inActiveImage: Assets.imagesHomeSelected,
+    inActiveImage: Assets.imagesHome,
+    activeImage: Assets.imagesHomeSelected,
     name: 'الرئيسية',
   ),
   BottomNavigationBarEntity(
-    activeImage: Assets.imagesProduct,
-    inActiveImage: Assets.imagesProductSelected,
+    inActiveImage: Assets.imagesProduct,
+    activeImage: Assets.imagesProductSelected,
     name: 'المنتجات',
   ),
   BottomNavigationBarEntity(
-    activeImage: Assets.imagesShoppingCart,
-    inActiveImage: Assets.imagesShoppingCartSelected,
+    inActiveImage: Assets.imagesShoppingCart,
+    activeImage: Assets.imagesShoppingCartSelected,
     name: 'سلة التسوق',
   ),
   BottomNavigationBarEntity(
-    activeImage: Assets.imagesUser,
-    inActiveImage: Assets.imagesUserSelected,
+    inActiveImage: Assets.imagesUser,
+    activeImage: Assets.imagesUserSelected,
     name: 'حسابي',
   ),
 ];

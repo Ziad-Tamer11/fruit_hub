@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fruit_hub/core/utils/app_images.dart';
+import 'package:fruit_hub/feature/home/domain/entities/bottom_navigation_bar_entity.dart';
+import 'package:fruit_hub/feature/home/presentation/view/widgets/navigation_bar_items.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -27,40 +27,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(children: [
-        
-      ],),
+      child: Row(
+        children: bottomNavigationBarItems.map((e) {
+          return NavigationBarItems(
+            isSelected: false,
+            bottomNavigationBarEntity: e,
+          );
+        }).toList(),
+      ),
     );
-  }
-}
-
-class InActiveItem extends StatelessWidget {
-  const InActiveItem({super.key, required this.image});
-
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(image);
-  }
-}
-
-class NavigationBarItem extends StatelessWidget {
-  const NavigationBarItem({super.key, required this.isSelected});
-  final bool isSelected;
-  @override
-  Widget build(BuildContext context) {
-    return isSelected
-        ? const ActiveItem()
-        : const InActiveItem(image: Assets.imagesShoppingCart);
-  }
-}
-
-class ActiveItem extends StatelessWidget {
-  const ActiveItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

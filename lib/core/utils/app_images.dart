@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for imagesAppIcon
   /// assets/images/app_icon.png
   static const String imagesAppIcon = "assets/images/app_icon.png";
@@ -28,13 +28,11 @@ class Assets {
 
   /// Assets for imagesFeaturedItemBackground
   /// assets/images/featured_item_background.svg
-  static const String imagesFeaturedItemBackground =
-      "assets/images/featured_item_background.svg";
+  static const String imagesFeaturedItemBackground = "assets/images/featured_item_background.svg";
 
   /// Assets for imagesFeaturedItemBackground2
   /// assets/images/featured_item_background_2.svg
-  static const String imagesFeaturedItemBackground2 =
-      "assets/images/featured_item_background_2.svg";
+  static const String imagesFeaturedItemBackground2 = "assets/images/featured_item_background_2.svg";
 
   /// Assets for imagesFilter
   /// assets/images/filter.svg
@@ -62,23 +60,19 @@ class Assets {
 
   /// Assets for imagesPageViewItem1BackgroundImage
   /// assets/images/page_view_item1_background_image.svg
-  static const String imagesPageViewItem1BackgroundImage =
-      "assets/images/page_view_item1_background_image.svg";
+  static const String imagesPageViewItem1BackgroundImage = "assets/images/page_view_item1_background_image.svg";
 
   /// Assets for imagesPageViewItem1Image
   /// assets/images/page_view_item1_image.svg
-  static const String imagesPageViewItem1Image =
-      "assets/images/page_view_item1_image.svg";
+  static const String imagesPageViewItem1Image = "assets/images/page_view_item1_image.svg";
 
   /// Assets for imagesPageViewItem2BackgroundImage
   /// assets/images/page_view_item2_background_image.svg
-  static const String imagesPageViewItem2BackgroundImage =
-      "assets/images/page_view_item2_background_image.svg";
+  static const String imagesPageViewItem2BackgroundImage = "assets/images/page_view_item2_background_image.svg";
 
   /// Assets for imagesPageViewItem2Image
   /// assets/images/page_view_item2_image.svg
-  static const String imagesPageViewItem2Image =
-      "assets/images/page_view_item2_image.svg";
+  static const String imagesPageViewItem2Image = "assets/images/page_view_item2_image.svg";
 
   /// Assets for imagesPlant
   /// assets/images/plant.svg
@@ -90,8 +84,7 @@ class Assets {
 
   /// Assets for imagesProductSelected
   /// assets/images/product_selected.svg
-  static const String imagesProductSelected =
-      "assets/images/product_selected.svg";
+  static const String imagesProductSelected = "assets/images/product_selected.svg";
 
   /// Assets for imagesProfileImage
   /// assets/images/profile_image.png
@@ -107,8 +100,7 @@ class Assets {
 
   /// Assets for imagesShoppingCartSelected
   /// assets/images/shopping_cart_selected.svg
-  static const String imagesShoppingCartSelected =
-      "assets/images/shopping_cart_selected.svg";
+  static const String imagesShoppingCartSelected = "assets/images/shopping_cart_selected.svg";
 
   /// Assets for imagesSplashBottom
   /// assets/images/splash_bottom.svg
@@ -124,6 +116,6 @@ class Assets {
 
   /// Assets for imagesWatermelonTest
   /// assets/images/watermelon_test.png
-  static const String imagesWatermelonTest =
-      "assets/images/watermelon_test.png";
+  static const String imagesWatermelonTest = "assets/images/watermelon_test.png";
 }
+
