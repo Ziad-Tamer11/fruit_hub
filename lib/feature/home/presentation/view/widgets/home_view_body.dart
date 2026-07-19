@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/widgets/search_text_field.dart';
-import 'package:fruit_hub/feature/home/presentation/view/widgets/best_selling_grid_view.dart';
-import 'package:fruit_hub/feature/home/presentation/view/widgets/best_selling_header.dart';
+import 'package:fruit_hub/core/widgets/best_selling_grid_view.dart';
+import 'package:fruit_hub/core/widgets/best_selling_header.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/custom_home_app_bar.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/featured_list.dart';
 
@@ -36,7 +36,7 @@ class HomeViewBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   horizontal: kHorizontalPadding,
                 ),
-                child: BestSellingHeader(),
+                child: BestSellingHeader(text: 'المزيد'),
               ),
               const SizedBox(height: 8),
             ],
@@ -44,7 +44,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         SliverPadding(
           padding: EdgeInsetsGeometry.symmetric(horizontal: kHorizontalPadding),
-          sliver: BestSellingGridView(),
+          sliver: BestSellingGridView(itemCount: 6),
         ),
       ],
     );

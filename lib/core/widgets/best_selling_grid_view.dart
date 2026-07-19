@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hub/core/widgets/fruit_item.dart';
 
 class BestSellingGridView extends StatelessWidget {
-  const BestSellingGridView({super.key});
+  const BestSellingGridView({super.key, required this.itemCount});
+  final int itemCount;
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class BestSellingGridView extends StatelessWidget {
         mainAxisSpacing: 8,
         crossAxisSpacing: 16,
       ),
+      itemCount: itemCount,
       itemBuilder: (context, index) {
         return FruitItem();
       },

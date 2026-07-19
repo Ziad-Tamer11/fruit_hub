@@ -12,7 +12,7 @@ AppBar buildAppBar(BuildContext context, {required String title}) {
       ),
     ],
     backgroundColor: Colors.transparent,
-    elevation: 0,
+
     title: const Text(
       'الأكثر مبيعًا',
       textAlign: TextAlign.center,
