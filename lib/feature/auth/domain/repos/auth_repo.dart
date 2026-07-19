@@ -47,4 +47,6 @@ abstract class AuthRepo {
   // فتكون محفوظة داخل Firestore.
 
   Future<UserEntity> getUserData({required String uid});
+
+  Future saveUserData({required UserEntity user});
 }

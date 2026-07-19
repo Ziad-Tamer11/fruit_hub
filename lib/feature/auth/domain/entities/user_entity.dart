@@ -12,13 +12,4 @@ class UserEntity {
   final String uId;
 
   UserEntity({required this.name, required this.email, required this.uId});
-
-  // Converts the entity into a Map
-  // before storing it in Firestore.
-  //
-  // تحويل الـ Entity إلى Map حتى يمكن حفظها داخل Firestore.
-
-  Map<String, String> toMap() {
-    return {'name': name, 'email': email, 'uId': uId};
-  }
 }
