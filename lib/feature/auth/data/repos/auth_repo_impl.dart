@@ -53,6 +53,7 @@ class AuthRepoImpl implements AuthRepo {
       );
       var userEntity = UserEntity(name: name, email: email, uId: user.uid);
       await addUserData(user: userEntity);
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       await deleteUser(user);
@@ -83,6 +84,7 @@ class AuthRepoImpl implements AuthRepo {
         password: password,
       );
       var userEntity = await getUserData(uid: user.uid);
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.errMessage));
@@ -112,6 +114,7 @@ class AuthRepoImpl implements AuthRepo {
         userEntity = UserModel.fromFirebaseUser(user);
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       if (shouldDeleteUser) {
@@ -167,6 +170,7 @@ class AuthRepoImpl implements AuthRepo {
         userEntity = UserModel.fromFirebaseUser(user);
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       if (shouldDeleteUser) {
