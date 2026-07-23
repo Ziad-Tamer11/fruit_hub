@@ -1,4 +1,5 @@
 import 'package:fruit_hub/core/entities/product_entity.dart';
+import 'package:fruit_hub/core/helper/get_avg_rating.dart';
 
 import 'review_model.dart';
 
@@ -34,12 +35,12 @@ class ProductModel {
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
+    final reviews = (json['reviews'] as List<dynamic>? ?? [])
+        .map((e) => ReviewModel.fromJson(e))
+        .toList();
+
     return ProductModel(
-      reviews: json['reviews'] != null
-          ? List<ReviewModel>.from(
-              json['reviews'].map((e) => ReviewModel.fromJson(e)),
-            )
-          : [],
+      reviews: reviews,
       name: json['name'],
       code: json['code'],
       description: json['description'],
@@ -50,7 +51,8 @@ class ProductModel {
       unitAmount: json['unitAmount'],
       isFeatured: json['isFeatured'],
       imageUrl: json['imageUrl'],
-      avgRating: json['avgRating'],
+      sellingCount: json['sellingCount'] ?? 0,
+      avgRating: reviews.isEmpty ? 0 : getAvgRating(reviews),
     );
   }
 
@@ -65,6 +67,8 @@ class ProductModel {
       numberOfCalories: numberOfCalories,
       unitAmount: unitAmount,
       isFeatured: isFeatured,
+      imageUrl: imageUrl,
+      isOrganic: isOrganic,
     );
   }
 

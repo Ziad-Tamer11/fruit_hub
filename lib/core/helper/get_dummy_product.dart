@@ -12,7 +12,8 @@ ProductEntity getDummyProduct() {
     unitAmount: 1,
     isOrganic: true,
     isFeatured: true,
-    imageUrl: null,
+    imageUrl:
+        'https://zbwoxiwnipgkkhabvgyh.supabase.co/storage/v1/object/public/fruits_images/images/49..jpg',
   );
 }
 

@@ -15,6 +15,8 @@ class BestSellingGridViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, state) {
         if (state is ProductsSuccess) {
+          print('Products Count: ${state.products.length}');
+
           return SliverPadding(
             padding: EdgeInsetsGeometry.symmetric(
               horizontal: kHorizontalPadding,
