@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/cubits/products_cubit/products_cubit.dart';
-import 'package:fruit_hub/core/widgets/best_selling_grid_view.dart';
 import 'package:fruit_hub/core/widgets/best_selling_header.dart';
 import 'package:fruit_hub/core/widgets/search_text_field.dart';
+import 'package:fruit_hub/feature/home/presentation/view/widgets/best_selling_grid_view_bloc_builder.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/custom_home_app_bar.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/featured_list.dart';
 
@@ -55,10 +55,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ],
           ),
         ),
-        SliverPadding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: kHorizontalPadding),
-          sliver: BestSellingGridView(itemCount: 6),
-        ),
+        BestSellingGridViewBlocBuilder(),
       ],
     );
   }

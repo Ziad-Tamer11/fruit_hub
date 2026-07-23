@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:fruit_hub/core/entities/product_entity.dart';
 import 'package:fruit_hub/core/repos/products_repo/products_repo.dart';
 import 'package:meta/meta.dart';
 
@@ -14,7 +15,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     final result = await productsRepo.getProducts();
     result.fold(
       (failure) => emit(ProductsFailure(errMessage: failure.errMessage)),
-      (products) => emit(ProductsSuccess()),
+      (products) => emit(ProductsSuccess(products)),
     );
   }
 
@@ -23,7 +24,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     final result = await productsRepo.getBestSellingProducts();
     result.fold(
       (failure) => emit(ProductsFailure(errMessage: failure.errMessage)),
-      (products) => emit(ProductsSuccess()),
+      (products) => emit(ProductsSuccess(products)),
     );
   }
 }
