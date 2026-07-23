@@ -30,7 +30,7 @@ class ProductsRepoImpl implements ProductsRepo {
           .toList();
 
       return right(products);
-    } on Exception catch (e) {
+    } on Exception {
       return left(ServerFailure('Failed to get Products'));
     }
   }
@@ -47,7 +47,7 @@ class ProductsRepoImpl implements ProductsRepo {
           .toList();
 
       return right(products);
-    } on Exception catch (e) {
+    } on Exception {
       return left(ServerFailure('Failed to get Products'));
     }
   }
