@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:fruit_hub/core/entities/product_entity.dart';
 
 import 'review_model.dart';
@@ -8,13 +7,12 @@ class ProductModel {
   final String code;
   final String description;
   final num price;
-  final File image;
   final bool isFeatured;
   String? imageUrl;
   final int expirationsMonths;
   final bool isOrganic;
   final int numberOfCalories;
-  final num avgRating = 0;
+  final num avgRating;
   final num ratingCount = 0;
   final int unitAmount;
   final int sellingCount;
@@ -30,9 +28,9 @@ class ProductModel {
     required this.price,
     this.sellingCount = 0,
     required this.isOrganic,
-    required this.image,
     required this.isFeatured,
     this.imageUrl,
+    required this.avgRating,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -47,12 +45,12 @@ class ProductModel {
       description: json['description'],
       price: json['price'],
       isOrganic: json['isOrganic'],
-      image: json['image'],
       expirationsMonths: json['expirationsMonths'],
       numberOfCalories: json['numberOfCalories'],
       unitAmount: json['unitAmount'],
       isFeatured: json['isFeatured'],
       imageUrl: json['imageUrl'],
+      avgRating: json['avgRating'],
     );
   }
 
@@ -66,7 +64,6 @@ class ProductModel {
       expirationsMonths: expirationsMonths,
       numberOfCalories: numberOfCalories,
       unitAmount: unitAmount,
-      image: image,
       isFeatured: isFeatured,
     );
   }
