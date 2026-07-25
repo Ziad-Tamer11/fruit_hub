@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
+import 'package:fruit_hub/core/utils/app_colors.dart';
+import 'package:fruit_hub/core/utils/app_text_styles.dart';
 
 class CartHeader extends StatelessWidget {
   const CartHeader({super.key});
@@ -14,12 +16,8 @@ class CartHeader extends StatelessWidget {
       child: Center(
         child: Text(
           'لديك 3 منتجات في سله التسوق',
-          style: TextStyle(
-            color: const Color(0xFF1B5E37) /* Green1-500 */,
-            fontSize: 13,
-            fontFamily: 'Cairo',
-            fontWeight: FontWeight.w400,
-            height: 1.60,
+          style: TextStyles.regular13.copyWith(
+            color: AppColors.primaryColor /* Green1-500 */,
           ),
         ),
       ),

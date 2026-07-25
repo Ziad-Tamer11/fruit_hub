@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/widgets/custom_app_bar.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/cart_header.dart';
+import 'package:fruit_hub/feature/home/presentation/view/widgets/cart_item.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -22,6 +23,7 @@ class CartViewBody extends StatelessWidget {
               const SizedBox(height: kTopPadding),
               CartHeader(),
               const SizedBox(height: 23),
+              CartItem(),
             ],
           ),
         ),
