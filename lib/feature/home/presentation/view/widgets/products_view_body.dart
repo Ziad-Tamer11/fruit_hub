@@ -30,7 +30,7 @@ class ProductsViewBody extends StatelessWidget {
                 ),
                 child: SearchTextField(),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: kHorizontalPadding,
@@ -39,7 +39,7 @@ class ProductsViewBody extends StatelessWidget {
                   productsLength: context.read<ProductsCubit>().productLength,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
             ],
           ),
         ),

@@ -12,7 +12,17 @@ class ProductsViewHeader extends StatelessWidget {
       children: [
         Text('$productsLength نتائج', style: TextStyles.bold16),
         Spacer(),
-        SvgPicture.asset(Assets.imagesFilter2),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: ShapeDecoration(
+            color: Colors.white.withValues(alpha: 0.10),
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 1, color: const Color(0x66CACECE)),
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          child: SvgPicture.asset(Assets.imagesFilter2),
+        ),
       ],
     );
   }
