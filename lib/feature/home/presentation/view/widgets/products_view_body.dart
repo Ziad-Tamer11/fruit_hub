@@ -43,7 +43,7 @@ class ProductsViewBody extends StatelessWidget {
             ],
           ),
         ),
-        BestSellingGridViewBlocBuilder(),
+        ProductsGridViewBlocBuilder(),
       ],
     );
   }

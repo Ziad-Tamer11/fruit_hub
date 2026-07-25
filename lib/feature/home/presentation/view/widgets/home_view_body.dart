@@ -42,7 +42,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        BestSellingGridViewBlocBuilder(),
+        ProductsGridViewBlocBuilder(),
       ],
     );
   }
