@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/cubits/products_cubit/products_cubit.dart';
+import 'package:fruit_hub/core/widgets/build_app_bar.dart';
 import 'package:fruit_hub/core/widgets/search_text_field.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/best_selling_grid_view_bloc_builder.dart';
-import 'package:fruit_hub/feature/home/presentation/view/widgets/custom_home_app_bar.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/products_view_header.dart';
 
 class ProductsViewBody extends StatelessWidget {
@@ -21,7 +21,11 @@ class ProductsViewBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   horizontal: kHorizontalPadding,
                 ),
-                child: CustomHomeAppBar(),
+                child: buildAppBar(
+                  context,
+                  title: 'المنتجات',
+                  showBackButton: false,
+                ),
               ),
               const SizedBox(height: kTopPadding),
               Padding(

@@ -3,7 +3,11 @@ import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 import 'package:fruit_hub/core/widgets/notification_widget.dart';
 
-AppBar buildAppBar(BuildContext context, {required String title}) {
+AppBar buildAppBar(
+  BuildContext context, {
+  required String title,
+  bool showBackButton = true,
+}) {
   return AppBar(
     actions: const [
       Padding(
@@ -12,18 +16,16 @@ AppBar buildAppBar(BuildContext context, {required String title}) {
       ),
     ],
     backgroundColor: Colors.transparent,
-
-    title: const Text(
-      'الأكثر مبيعًا',
-      textAlign: TextAlign.center,
-      style: TextStyles.bold19,
-    ),
+    title: Text(title, textAlign: TextAlign.center, style: TextStyles.bold19),
     centerTitle: true,
-    leading: IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      icon: const Icon(Icons.arrow_back_ios_new_outlined),
+    leading: Visibility(
+      visible: showBackButton,
+      child: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: const Icon(Icons.arrow_back_ios_new_outlined),
+      ),
     ),
   );
 }
