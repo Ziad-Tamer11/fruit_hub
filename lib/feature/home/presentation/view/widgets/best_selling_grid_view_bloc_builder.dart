@@ -19,7 +19,7 @@ class BestSellingGridViewBlocBuilder extends StatelessWidget {
             padding: EdgeInsetsGeometry.symmetric(
               horizontal: kHorizontalPadding,
             ),
-            sliver: BestSellingGridView(products: state.products),
+            sliver: BestSellingGridView(itemCount: 4, products: state.products),
           );
         }
         if (state is ProductsFailure) {
