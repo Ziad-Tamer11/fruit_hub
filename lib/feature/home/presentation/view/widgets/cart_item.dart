@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_images.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
+import 'package:fruit_hub/core/widgets/custom_network_image.dart';
 import 'package:fruit_hub/feature/home/domain/entities/cart_item_entity.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/cart_item_acion_buttons.dart';
 
@@ -18,7 +19,9 @@ class CartItem extends StatelessWidget {
             width: 73,
             height: 92,
             decoration: BoxDecoration(color: const Color(0xFFF3F5F7)),
-            child: Image.asset(Assets.imagesWatermelonTest),
+            child: CustomNetworkImage(
+              imageUrl: cartItemEntity.productEntity.imageUrl!,
+            ),
           ),
           SizedBox(width: 17),
           Expanded(
@@ -28,7 +31,10 @@ class CartItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text('بطيخ', style: TextStyles.bold13),
+                    Text(
+                      cartItemEntity.productEntity.name,
+                      style: TextStyles.bold13,
+                    ),
                     Spacer(),
                     GestureDetector(
                       onTap: () {},
@@ -37,7 +43,7 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '3 كم',
+                  '${cartItemEntity.calculateTotalWeight()} كم',
                   style: TextStyles.regular13.copyWith(
                     color: const Color(0xFFF4A91F) /* Orange-500 */,
                   ),
@@ -47,7 +53,7 @@ class CartItem extends StatelessWidget {
                     CartItemAcionButtons(),
                     Spacer(),
                     Text(
-                      '60 جنيه',
+                      '${cartItemEntity.calculateTotalPrice()} جنيه',
                       style: TextStyles.bold16.copyWith(
                         color: AppColors.secondaryColor,
                       ),
