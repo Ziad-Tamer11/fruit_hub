@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 
@@ -9,7 +8,6 @@ class CartHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(color: const Color(0xFFEBF9F1) /* Green1-50 */),

@@ -23,6 +23,7 @@ class CartItem extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
@@ -40,7 +41,6 @@ class CartItem extends StatelessWidget {
                     color: const Color(0xFFF4A91F) /* Orange-500 */,
                   ),
                 ),
-                SizedBox(height: 6),
                 Row(
                   children: [
                     CartItemAcionButtons(),
