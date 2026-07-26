@@ -10,7 +10,7 @@ class ActiveStepItem extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          backgroundColor: const Color(0xFF1B5E37) /* Green1-500 */,
+          backgroundColor: AppColors.primaryColor /* Green1-500 */,
           radius: 11.5,
           child: FittedBox(
             child: Icon(Icons.check_rounded, color: Colors.white, size: 18),
@@ -19,7 +19,7 @@ class ActiveStepItem extends StatelessWidget {
         SizedBox(width: 4),
         Text(
           'الشحن',
-          style: TextStyles.bold16.copyWith(color: AppColors.primaryColor),
+          style: TextStyles.bold13.copyWith(color: AppColors.primaryColor),
         ),
       ],
     );
