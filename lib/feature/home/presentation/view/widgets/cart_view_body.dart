@@ -51,7 +51,9 @@ class CartViewBody extends StatelessWidget {
           left: 16,
           right: 16,
           bottom: MediaQuery.sizeOf(context).height * .05,
-          child: CustomCartButton(),
+          child: context.read<CartCubit>().cartEntity.cartItems.isEmpty
+              ? SizedBox()
+              : CustomCartButton(),
         ),
       ],
     );

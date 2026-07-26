@@ -10,7 +10,8 @@ class ProductsViewHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('$productsLength نتائج', style: TextStyles.bold16),
+        Text('منتجاتنا', style: TextStyles.bold16),
+        // Text('$productsLength نتائج', style: TextStyles.bold16),
         Spacer(),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
