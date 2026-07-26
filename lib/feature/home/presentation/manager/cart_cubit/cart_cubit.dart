@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:fruit_hub/core/entities/product_entity.dart';
 import 'package:fruit_hub/feature/home/domain/entities/cart_entity.dart';
-import 'package:fruit_hub/feature/home/domain/entities/cart_item_entity.dart';
 import 'package:meta/meta.dart';
 
 part 'cart_state.dart';
@@ -13,14 +12,11 @@ class CartCubit extends Cubit<CartState> {
 
   void addProduct(ProductEntity productEntity) {
     bool isProductExist = cartEntity.isExist(productEntity);
+    var cartItem = cartEntity.getCartItem(productEntity);
     if (isProductExist) {
-      // increase count product
+      cartItem.increaseCount();
     } else {
-      CartItemEntity cartItemEntity = CartItemEntity(
-        productEntity: productEntity,
-        count: 1,
-      );
-      cartEntity.addCartItem(cartItemEntity);
+      cartEntity.addCartItem(cartItem);
     }
     emit(CartItemAdded());
   }
