@@ -10,6 +10,10 @@ class CartEntity {
     cartItems.add(cartItemEntity);
   }
 
+  void removeCartItem(CartItemEntity cartItemEntity) {
+    cartItems.remove(cartItemEntity);
+  }
+
   bool isExist(ProductEntity product) {
     for (var cartItem in cartItems) {
       if (cartItem.productEntity == product) {
