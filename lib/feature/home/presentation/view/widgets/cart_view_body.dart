@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/widgets/custom_app_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
+import 'package:fruit_hub/feature/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/cart_header.dart';
 import 'package:fruit_hub/feature/home/presentation/view/widgets/cart_item_list.dart';
 
@@ -29,9 +31,17 @@ class CartViewBody extends StatelessWidget {
                 ],
               ),
             ),
-            SliverToBoxAdapter(child: CustomDivider()),
+            SliverToBoxAdapter(
+              child: context.read<CartCubit>().cartEntity.cartItems.isEmpty
+                  ? SizedBox()
+                  : CustomDivider(),
+            ),
             CartItemList(cartItemEntity: []),
-            SliverToBoxAdapter(child: CustomDivider()),
+            SliverToBoxAdapter(
+              child: context.read<CartCubit>().cartEntity.cartItems.isEmpty
+                  ? SizedBox()
+                  : CustomDivider(),
+            ),
           ],
         ),
         Positioned(
