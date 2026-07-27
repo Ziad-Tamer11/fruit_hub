@@ -14,7 +14,6 @@ class _ShippingSectionState extends State<ShippingSection> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 32),
         ShippingItem(
           onTap: () {
             selectedIndex = 0;

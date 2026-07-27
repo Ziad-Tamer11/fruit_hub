@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/feature/checkout/presentation/view/widgets/address_input_section.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/shipping_section.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
@@ -19,6 +20,6 @@ class CheckoutStepsPageView extends StatelessWidget {
   }
 
   List<Widget> getPages() {
-    return [ShippingSection(), SizedBox(), SizedBox(), SizedBox()];
+    return [ShippingSection(), AddressInputSection(), SizedBox(), SizedBox()];
   }
 }
