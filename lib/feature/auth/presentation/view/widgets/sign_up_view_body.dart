@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/constants.dart';
-import 'package:fruit_hub/core/helper/build_error_bar.dart';
+import 'package:fruit_hub/core/helper/show_message_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/core/widgets/custom_text_form_field.dart';
 import 'package:fruit_hub/core/widgets/password_field.dart';
@@ -72,7 +72,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             password,
                           );
                     } else {
-                      buildMessageBar(
+                      showMessageBar(
                         context,
                         'يجب عليك الموافقة علي الشروط والأحكام',
                       );

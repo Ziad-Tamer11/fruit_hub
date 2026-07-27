@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_hub/core/helper/build_error_bar.dart';
+import 'package:fruit_hub/core/helper/show_message_bar.dart';
 import 'package:fruit_hub/feature/auth/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:fruit_hub/feature/auth/presentation/view/widgets/sign_up_view_body.dart';
 import 'package:fruit_hub/feature/home/presentation/view/main_view.dart';
@@ -14,11 +14,11 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpSuccess) {
-          buildMessageBar(context, 'تم إنشاء الحساب بنجاح.');
+          showMessageBar(context, 'تم إنشاء الحساب بنجاح.');
           Navigator.pushNamed(context, MainView.routeName);
         }
         if (state is SignUpFailure) {
-          buildMessageBar(context, state.errMessage);
+          showMessageBar(context, state.errMessage);
         }
       },
       builder: (context, state) {

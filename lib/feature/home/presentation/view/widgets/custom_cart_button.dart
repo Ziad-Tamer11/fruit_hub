@@ -14,7 +14,11 @@ class CustomCartButton extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onPressed: () {
-            Navigator.pushNamed(context, CheckoutView.routeName);
+            Navigator.pushNamed(
+              context,
+              CheckoutView.routeName,
+              arguments: context.read<CartCubit>().cartEntity.cartItems,
+            );
           },
           text:
               'الدفع  ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه',
