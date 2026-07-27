@@ -1,10 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/widgets/custom_app_bar.dart';
+import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps.dart';
+import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps_page_view.dart';
 
-class CheckoutViewBody extends StatelessWidget {
+class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
+
+  @override
+  State<CheckoutViewBody> createState() => _CheckoutViewBodyState();
+}
+
+class _CheckoutViewBodyState extends State<CheckoutViewBody> {
+  late PageController pageController;
+
+  @override
+  void initState() {
+    pageController = PageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +37,11 @@ class CheckoutViewBody extends StatelessWidget {
           buildCustomAppBar(context, title: 'الشحن'),
           SizedBox(height: 20),
           CheckoutSteps(),
+          Expanded(
+            child: CheckoutStepsPageView(pageController: pageController),
+          ),
+          CustomButton(onPressed: () {}, text: 'التالي'),
+          SizedBox(height: 200),
         ],
       ),
     );
