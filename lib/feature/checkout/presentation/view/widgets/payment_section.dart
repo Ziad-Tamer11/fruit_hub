@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/feature/checkout/presentation/view/widgets/delivery_address.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/order_summary.dart';
 
 class PaymentSection extends StatelessWidget {
@@ -7,7 +8,12 @@ class PaymentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [SizedBox(height: 24), OrderSummary(), SizedBox(height: 16)],
+      children: [
+        SizedBox(height: 24),
+        OrderSummary(),
+        SizedBox(height: 16),
+        DeliveryAddress(),
+      ],
     );
   }
 }
