@@ -9,6 +9,8 @@ class AddressInputSection extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
+          SizedBox(height: 24),
+
           CustomTextFormField(
             hintText: 'الاسم كامل',
             keyboardType: TextInputType.name,

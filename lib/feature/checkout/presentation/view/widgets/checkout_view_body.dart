@@ -37,8 +37,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           buildCustomAppBar(context, title: 'الشحن'),
           SizedBox(height: 20),
           CheckoutSteps(),
-          SizedBox(height: 32),
-
           Expanded(
             child: CheckoutStepsPageView(pageController: pageController),
           ),
