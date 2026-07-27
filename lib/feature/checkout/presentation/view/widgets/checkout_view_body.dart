@@ -17,7 +17,9 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
-
+  ValueNotifier<AutovalidateMode> valueNotifier = ValueNotifier(
+    AutovalidateMode.disabled,
+  );
   @override
   void initState() {
     pageController = PageController();
@@ -33,6 +35,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   @override
   void dispose() {
     pageController.dispose();
+    valueNotifier.dispose();
     super.dispose();
   }
 
@@ -54,28 +57,50 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
           Expanded(
             child: CheckoutStepsPageView(
+              valueListenable: valueNotifier,
               pageController: pageController,
               formKey: _formKey,
             ),
           ),
           CustomButton(
             onPressed: () {
-              if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateToPage(
-                  currentPageIndex + 1,
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeIn,
-                );
-              } else {
-                showMessageBar(context, 'يرجي تحديد طريقه الدفع');
+              if (currentPageIndex == 0) {
+                _handleShippingSectionValidation(context);
+              } else if (currentPageIndex == 1) {
+                _handleAddressValidation(context);
               }
             },
             text: getNextButtonText(currentPageIndex),
           ),
-          SizedBox(height: 200),
+          SizedBox(height: 100),
         ],
       ),
     );
+  }
+
+  void _handleShippingSectionValidation(BuildContext context) {
+    if (context.read<OrderEntity>().payWithCash != null) {
+      pageController.animateToPage(
+        currentPageIndex + 1,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+    } else {
+      showMessageBar(context, 'يرجي تحديد طريقه الدفع');
+    }
+  }
+
+  void _handleAddressValidation(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      pageController.animateToPage(
+        currentPageIndex + 1,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+    } else {
+      valueNotifier.value = AutovalidateMode.always;
+    }
   }
 
   String getNextButtonText(int currentPageIndex) {
