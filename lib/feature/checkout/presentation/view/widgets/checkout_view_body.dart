@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/constants.dart';
+import 'package:fruit_hub/core/helper/show_message_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_app_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
+import 'package:fruit_hub/feature/checkout/domain/entities/order_entity.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps_page_view.dart';
 
@@ -53,11 +56,15 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
           CustomButton(
             onPressed: () {
-              pageController.animateToPage(
-                currentPageIndex + 1,
-                duration: Duration(milliseconds: 300),
-                curve: Curves.easeIn,
-              );
+              if (context.read<OrderEntity>().payWithCash != null) {
+                pageController.animateToPage(
+                  currentPageIndex + 1,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              } else {
+                showMessageBar(context, 'يرجي تحديد طريقه الدفع');
+              }
             },
             text: getNextButtonText(currentPageIndex),
           ),
