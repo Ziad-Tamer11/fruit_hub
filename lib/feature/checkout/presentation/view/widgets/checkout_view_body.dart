@@ -5,6 +5,7 @@ import 'package:fruit_hub/core/helper/show_message_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_app_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/feature/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_hub/feature/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps_page_view.dart';
 
@@ -68,6 +69,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 _handleShippingSectionValidation(context);
               } else if (currentPageIndex == 1) {
                 _handleAddressValidation(context);
+              } else {
+                var orderEntity = context.read<OrderEntity>();
+                context.read<AddOrderCubit>().addOrder(
+                  orderEntity: orderEntity,
+                );
               }
             },
             text: getNextButtonText(currentPageIndex),
