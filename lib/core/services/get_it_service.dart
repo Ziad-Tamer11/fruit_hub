@@ -5,6 +5,8 @@ import 'package:fruit_hub/core/services/firebase_auth_service.dart';
 import 'package:fruit_hub/core/services/firestore_service.dart';
 import 'package:fruit_hub/feature/auth/data/repos/auth_repo_impl.dart';
 import 'package:fruit_hub/feature/auth/domain/repos/auth_repo.dart';
+import 'package:fruit_hub/feature/checkout/data/repos/orders_repo/orders_repo.dart';
+import 'package:fruit_hub/feature/checkout/data/repos/orders_repo/orders_repo_impl.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -20,5 +22,8 @@ void setUpGetIt() {
       firebaseAuthService: getIt<FirebaseAuthService>(),
       databaseService: getIt<DatabaseService>(),
     ),
+  );
+  getIt.registerSingleton<OrdersRepo>(
+    OrdersRepoImpl(databaseService: getIt<DatabaseService>()),
   );
 }
