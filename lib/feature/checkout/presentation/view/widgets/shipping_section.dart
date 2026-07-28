@@ -29,7 +29,7 @@ class _ShippingSectionState extends State<ShippingSection>
           isSelected: selectedIndex == 0,
           title: 'الدفع عند الاستلام',
           subTitle: 'التسليم من المكان',
-          price: (orderEntity.cartEntity.calculateTotalPrice() + 50).toString(),
+          price: (orderEntity.cartEntity.calculateTotalPrice() + 30).toString(),
         ),
         SizedBox(height: 8),
         ShippingItem(

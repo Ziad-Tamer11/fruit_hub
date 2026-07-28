@@ -8,14 +8,16 @@ class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key, required this.cartEntity});
 
   static const routeName = 'checkout';
+
   final CartEntity cartEntity;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Provider.value(
-          value: OrderEntity(cartEntity: cartEntity),
-          child: CheckoutViewBody(),
+        child: Provider(
+          create: (_) => OrderEntity(cartEntity: cartEntity),
+          child: const CheckoutViewBody(),
         ),
       ),
     );

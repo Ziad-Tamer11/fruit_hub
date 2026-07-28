@@ -63,10 +63,7 @@ class AddressInputSection extends StatelessWidget {
               CustomTextFormField(
                 hintText: 'رقم الطابق , رقم الشقه ..',
                 onSaved: (value) {
-                  context
-                          .read<OrderEntity>()
-                          .shippingAddressEntity
-                          .addressDetails =
+                  context.read<OrderEntity>().shippingAddressEntity.floor =
                       value!;
                 },
                 keyboardType: TextInputType.text,

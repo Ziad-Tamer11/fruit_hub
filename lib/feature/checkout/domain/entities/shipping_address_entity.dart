@@ -4,7 +4,7 @@ class ShippingAddressEntity {
   String? email;
   String? address;
   String? city;
-  String? addressDetails;
+  String? floor;
 
   ShippingAddressEntity({
     this.name,
@@ -12,6 +12,10 @@ class ShippingAddressEntity {
     this.email,
     this.address,
     this.city,
-    this.addressDetails,
+    this.floor,
   });
+
+  String toString() {
+    return '$address $city $floor';
+  }
 }
