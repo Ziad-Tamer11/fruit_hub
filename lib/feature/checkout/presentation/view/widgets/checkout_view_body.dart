@@ -10,6 +10,7 @@ import 'package:fruit_hub/core/widgets/custom_app_bar.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/feature/checkout/domain/entities/order_entity.dart';
 import 'package:fruit_hub/feature/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
+import 'package:fruit_hub/feature/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps.dart';
 import 'package:fruit_hub/feature/checkout/presentation/view/widgets/checkout_steps_page_view.dart';
 
@@ -127,6 +128,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
             print("onSuccess: $params");
+            Navigator.pop(context);
+            context.read<AddOrderCubit>().addOrder(orderEntity: orderEntity);
           },
           onError: (error) {
             Navigator.pop(context);
