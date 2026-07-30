@@ -10,7 +10,10 @@ class AddOrderCubit extends Cubit<AddOrderState> {
 
   final OrdersRepo ordersRepo;
 
-  Future<void> addOrder({required OrderEntity orderEntity}) async {
+  Future<void> addOrder({
+    required OrderEntity orderEntity,
+    required OrderEntity order,
+  }) async {
     emit(AddOrderLoading());
     var result = await ordersRepo.addOrder(orderEntity: orderEntity);
     result.fold(
